@@ -20,6 +20,7 @@ class MatchListScreen extends StatefulWidget {
 class _MatchListScreenState extends State<MatchListScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  int _bottomTapCount = 0;
 
   @override
   void initState() {
@@ -55,26 +56,37 @@ class _MatchListScreenState extends State<MatchListScreen>
           ),
         ],
       ),
-      bottomNavigationBar: Container(
-        height: 70.h,
-        // color: AppColors.surfaceVariant,
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
-        margin: EdgeInsets.all(8.r),
-        decoration: BoxDecoration(
-          color: AppColors.surfaceVariant,
-          borderRadius: BorderRadius.circular(20.r),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Text(
-                'Vote for who you think will win',
-                style: AppTextStyles.bold16.copyWith(color: Colors.white),
-                textAlign: TextAlign.center,
+      bottomNavigationBar: GestureDetector(
+        onTap: () {
+          setState(() {
+            _bottomTapCount++;
+          });
+          if (_bottomTapCount >= 10) {
+            _bottomTapCount = 0;
+            context.push('/admin');
+          }
+        },
+        child: Container(
+          height: 70.h,
+          // color: AppColors.surfaceVariant,
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          margin: EdgeInsets.all(8.r),
+          decoration: BoxDecoration(
+            color: AppColors.surfaceVariant,
+            borderRadius: BorderRadius.circular(20.r),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Text(
+                  'Vote for who you think will win',
+                  style: AppTextStyles.bold16.copyWith(color: Colors.white),
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       // floatingActionButton: FloatingActionButton(
