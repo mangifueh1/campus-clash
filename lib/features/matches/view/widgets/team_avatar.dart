@@ -18,24 +18,30 @@ class TeamAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final avatarSize = size ?? 80.w;
-    
+
     return Container(
       width: avatarSize,
       height: avatarSize,
       decoration: BoxDecoration(
-        color: AppColors.primary.withOpacity(0.1),
+        color: AppColors.primary.withValues(alpha: 0.1),
         shape: BoxShape.circle,
         border: Border.all(
-          color: isSelected ? AppColors.primary : AppColors.primary.withOpacity(0.3),
+          color: isSelected
+              ? AppColors.primary
+              : AppColors.primary.withValues(alpha: 0.3),
           width: isSelected ? 3.w : 1.w,
         ),
       ),
+      padding: EdgeInsets.all(avatarSize * 0.2),
       child: Center(
-        child: Text(
-          shortName,
-          style: AppTextStyles.black10.copyWith(
-            color: Colors.white,
-            fontSize: (avatarSize * 0.25).sp,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            shortName,
+            style: AppTextStyles.black10.copyWith(
+              color: Colors.white,
+              fontSize: (avatarSize * 0.25).sp,
+            ),
           ),
         ),
       ),

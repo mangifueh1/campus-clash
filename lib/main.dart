@@ -12,9 +12,7 @@ import 'package:campus_clash/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(
     MultiProvider(
       providers: [
@@ -69,7 +67,7 @@ class MyApp extends StatelessWidget {
                 }
 
                 return ScreenWrapper(
-                  maxWidth: 400, // Enforcing mobile width as per instructions
+                  // maxWidth: 400, // Enforcing mobile width as per instructions
                   child: materialChild!,
                 );
               },

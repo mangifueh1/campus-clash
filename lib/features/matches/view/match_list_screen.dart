@@ -55,6 +55,28 @@ class _MatchListScreenState extends State<MatchListScreen>
           ),
         ],
       ),
+      bottomNavigationBar: Container(
+        height: 70.h,
+        // color: AppColors.surfaceVariant,
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        margin: EdgeInsets.all(8.r),
+        decoration: BoxDecoration(
+          color: AppColors.surfaceVariant,
+          borderRadius: BorderRadius.circular(20.r),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Text(
+                'Vote for who you think will win',
+                style: AppTextStyles.bold16.copyWith(color: Colors.white),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
+        ),
+      ),
       // floatingActionButton: FloatingActionButton(
       //   onPressed: () => context.push('/admin'),
       //   backgroundColor: AppColors.primary,
