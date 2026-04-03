@@ -15,10 +15,7 @@ import 'package:campus_clash/core/widgets/app_button.dart';
 class UpcomingMatchCard extends StatelessWidget {
   final MatchModel match;
 
-  const UpcomingMatchCard({
-    super.key,
-    required this.match,
-  });
+  const UpcomingMatchCard({super.key, required this.match});
 
   @override
   Widget build(BuildContext context) {
@@ -68,14 +65,21 @@ class UpcomingMatchCard extends StatelessWidget {
               SizedBox(width: 24.w),
               Column(
                 children: [
-                  Text(
-                    'VS',
-                    style: AppTextStyles.bold16,
-                  ),
+                  Text('VS', style: AppTextStyles.bold16),
                   if (match.date != null) ...[
                     SizedBox(height: 4.h),
                     Text(
                       match.date!,
+                      style: AppTextStyles.extraBold10.copyWith(
+                        color: AppColors.textSecondary,
+                        fontSize: 8.sp,
+                      ),
+                    ),
+                  ],
+                  if (match.time != null) ...[
+                    SizedBox(height: 4.h),
+                    Text(
+                      match.time!,
                       style: AppTextStyles.extraBold10.copyWith(
                         color: AppColors.textSecondary,
                         fontSize: 8.sp,
@@ -107,15 +111,24 @@ class UpcomingMatchCard extends StatelessWidget {
                   text: 'VOTE ${getTeamShortName(match.homeTeam)}',
                   onPressed: () {
                     context.read<MatchesProvider>().voteForTeam(match.id, true);
-                    context.read<VotingProvider>().registerVoteLocally(match.id, true);
+                    context.read<VotingProvider>().registerVoteLocally(
+                      match.id,
+                      true,
+                    );
                   },
                   width: 140.w,
                 ),
                 AppButton(
                   text: 'VOTE ${getTeamShortName(match.awayTeam)}',
                   onPressed: () {
-                    context.read<MatchesProvider>().voteForTeam(match.id, false);
-                    context.read<VotingProvider>().registerVoteLocally(match.id, false);
+                    context.read<MatchesProvider>().voteForTeam(
+                      match.id,
+                      false,
+                    );
+                    context.read<VotingProvider>().registerVoteLocally(
+                      match.id,
+                      false,
+                    );
                   },
                   isPrimary: false,
                   width: 140.w,
@@ -144,16 +157,9 @@ class _TeamInfoWithSelection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TeamAvatar(
-          shortName: shortName,
-          size: 70.w,
-          isSelected: isSelected,
-        ),
+        TeamAvatar(shortName: shortName, size: 70.w, isSelected: isSelected),
         SizedBox(height: 12.h),
-        Text(
-          fullName,
-          style: AppTextStyles.bold10,
-        ),
+        Text(fullName, style: AppTextStyles.bold10),
       ],
     );
   }
