@@ -34,7 +34,10 @@ class _MatchListScreenState extends State<MatchListScreen>
 
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset('assets/logo.png', height: 40.h),
+        title: Text(
+          'FSSA DEANS CUP',
+          style: AppTextStyles.black24,
+        ),
         actions: const [
           // Circular profile icon removed as requested
         ],

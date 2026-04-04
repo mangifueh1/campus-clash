@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       useInheritedMediaQuery: true,
       builder: (context, child) {
         return MaterialApp.router(
-          title: 'Campus Clash',
+          title: 'FSSA DEANS CUP',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             useMaterial3: true,
